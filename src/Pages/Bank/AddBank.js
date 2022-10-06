@@ -154,10 +154,9 @@ const AddBank = () => {
             <Grid item xs={12} sm={12} md={12} lg={6}>
               <TextField
                 name="bank_name"
-                //required
+                required
                 fullWidth
                 label="Bank Name"
-                // className={classes.textField}
                 value={formState.bank_name}
                 onChange={handleChange}
                 margin="normal"
@@ -168,6 +167,7 @@ const AddBank = () => {
               <TextField
                 name="branch_city"
                 fullWidth={true}
+                required
                 label="Select City"
                 onChange={handleChange}
                 value={formState.branch_city}
