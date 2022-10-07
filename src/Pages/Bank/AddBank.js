@@ -21,10 +21,14 @@ const useStyles = makeStyles((theme) => ({
     padding: "20px",
     marginTop: "30px",
   },
-  btnContainer: {
+  actionBtnContainer: {
     display: "flex",
     gap: "10px",
     justifyContent: "flex-end",
+  },
+  btnContainer: {
+    display: "flex",
+    justifyContent: "space-between",
   },
 }));
 
@@ -73,14 +77,14 @@ const AddBank = () => {
       })
       .catch(function (error) {
         if (error.response) {
-            Swal.fire({
-              position: "center",
-              icon: "error",
-              title: `${error.response.data.Message}`,
-              showConfirmButton: false,
-              timer: 1500,
-            });
-          }
+          Swal.fire({
+            position: "center",
+            icon: "error",
+            title: `${error.response.data.Message}`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
       });
   };
 
@@ -139,14 +143,24 @@ const AddBank = () => {
 
   return (
     <div>
-      <Button
-        variant="contained"
-        color="primary"
-        onClick={() => history.push("/")}
-      >
-        {" "}
-        Back{" "}
-      </Button>
+      <div className={classes.btnContainer}>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => history.push("/")}
+        >
+          {" "}
+          Back{" "}
+        </Button>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => history.push("/banks")}
+        >
+          {" "}
+          Banks{" "}
+        </Button>
+      </div>
       <Paper variant="elevation" elevation={4} className={classes.paper}>
         <Typography variant="h5">Add/Edit Bank Name</Typography>
         <form onSubmit={submitHandler}>
@@ -191,7 +205,7 @@ const AddBank = () => {
                 )}
               </TextField>
             </Grid>
-            <Grid item lg={12} className={classes.btnContainer}>
+            <Grid item lg={12} className={classes.actionBtnContainer}>
               <Button variant="contained" color="default" onClick={clearState}>
                 Cancel
               </Button>

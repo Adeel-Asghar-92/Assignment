@@ -53,6 +53,7 @@ const Banks = () => {
         setBanks(response.data);
       })
       .catch(function (error) {
+        setLoading(false);
         if (error.response) {
           Swal.fire({
             position: "center",
@@ -124,7 +125,11 @@ const Banks = () => {
         <div style={{ display: "flex", justifyContent: "center" }}>
           {loading && <CircularProgress color="primary" />}
         </div>
-        {!loading && banks.length === 0 && <Typography>No Data</Typography> }
+        {!loading && banks.length === 0 && (
+          <Typography align="center" variant="h6">
+            No Data
+          </Typography>
+        )}
       </Paper>
     </>
   );
